@@ -189,6 +189,42 @@ UnlockVipBtn.MouseButton1Click:Connect(function()
 end)
 
 ---------------------------
+-- PESTAÑA MAIN - NUEVA FUNCIÓN: Comprar Ítem
+---------------------------
+-- TextBox para ingresar el nombre del objeto (ahora muestra "Item Name")
+local BuyItemTextBox = Instance.new("TextBox")
+BuyItemTextBox.Size = UDim2.new(1, -10, 0, 40)
+BuyItemTextBox.BackgroundColor3 = Color3.fromRGB(80,80,80)
+BuyItemTextBox.Text = "Item Name"
+BuyItemTextBox.TextColor3 = Color3.new(1,1,1)
+BuyItemTextBox.TextScaled = true
+BuyItemTextBox.Font = Enum.Font.Gotham
+BuyItemTextBox.Parent = MainContent
+
+local BuyItemTextBoxCorner = Instance.new("UICorner")
+BuyItemTextBoxCorner.CornerRadius = UDim.new(0,6)
+BuyItemTextBoxCorner.Parent = BuyItemTextBox
+
+-- Botón: Buy Item
+local BuyItemButton = Instance.new("TextButton")
+BuyItemButton.Size = UDim2.new(1, -10, 0, 40)
+BuyItemButton.BackgroundColor3 = Color3.fromRGB(80,80,80)
+BuyItemButton.Text = "Buy Item"
+BuyItemButton.TextColor3 = Color3.new(1,1,1)
+BuyItemButton.TextScaled = true
+BuyItemButton.Font = Enum.Font.Gotham
+BuyItemButton.Parent = MainContent
+
+local BuyItemButtonCorner = Instance.new("UICorner")
+BuyItemButtonCorner.CornerRadius = UDim.new(0,6)
+BuyItemButtonCorner.Parent = BuyItemButton
+
+BuyItemButton.MouseButton1Click:Connect(function()
+    local itemName = BuyItemTextBox.Text
+    game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(itemName)
+end)
+
+---------------------------
 -- PESTAÑA TELEPORTS
 -- Botón: Teleport to VIP
 ---------------------------
